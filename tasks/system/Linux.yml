@@ -1,0 +1,64 @@
+---
+- name: "Check if Solr Service Exists"
+  stat:
+    path: /etc/init.d/solr
+  register: solr_service_status
+
+- name: "Stop solr service"
+  systemd:
+    name: "{{ solr_service_name }}"
+    state: stopped
+    enabled: False
+  register: solr_service_status
+  until: solr_service_status.state == "stopped"
+  retries: 5
+  delay: 10
+  become: True
+  when: solr_service_status.stat.exists
+
+- name: "Remove {{ solr_insh_default }}"
+  file:
+    path: "{{ solr_insh_default }}"
+    state: absent
+  become: True
+
+- name: "Completely remove solr directories"
+  file:
+    path: "{{ solr_base_path }}"
+    state: absent
+  become: True
+
+# mb set as optional
+- name: "Clean solr home"
+  file:
+    path: "{{ dest_solr_path }}"
+    state: absent
+  become: True
+
+- name: "Clean solr symlink directory"
+  file:
+    path: /opt/solr
+    state: absent
+  become: True
+
+- name: "Remove solr autostart script"
+  file:
+    path: /etc/init.d/solr
+    state: absent
+  become: True
+
+- name: "Delete solr user"
+  user:
+    name: solr
+    state: absent
+    remove: True
+    force: True
+  become: True
+  when: solr_remove_user
+
+- name: "Delete solr group"
+  group:
+    name: solr
+    state: absent
+  become: True
+  when: solr_remove_user

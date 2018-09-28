@@ -1,0 +1,12 @@
+---
+solr_version: 7.1.0
+
+solr_service_name: "solr"
+solr_with_systemd: True
+
+solr_user: "solr"
+solr_group: "solr"
+solr_base_path: /var/solr
+solr_insh_default: /etc/default/solr.in.sh
+
+solr_remove_user: False
