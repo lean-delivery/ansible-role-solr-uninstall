@@ -12,6 +12,6 @@
   roles:
     - role: lean_delivery.java
     - role: lean_delivery.solr_standalone
-    - role: solr-uninstall
+    - role: ansible-role-solr-uninstall
   vars:
     change_default_password: False
