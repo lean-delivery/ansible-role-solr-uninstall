@@ -2,6 +2,9 @@ Solr Uninstall
 =========
 [![License](https://img.shields.io/badge/license-Apache-green.svg?style=flat)](https://raw.githubusercontent.com/lean-delivery/ansible-role-solr-uninstall/master/LICENSE)
 [![Build Status](https://travis-ci.org/lean-delivery/ansible-role-solr-uninstall.svg?branch=master)](https://travis-ci.org/lean-delivery/ansible-role-solr-uninstall)
+[![Galaxy](https://img.shields.io/badge/galaxy-lean__delivery.solr__uninstall-blue.svg)](https://galaxy.ansible.com/lean_delivery/solr_uninstall)
+![Ansible](https://img.shields.io/ansible/role/d/30178.svg)
+![Ansible](https://img.shields.io/badge/dynamic/json.svg?label=min_ansible_version&url=https%3A%2F%2Fgalaxy.ansible.com%2Fapi%2Fv1%2Froles%2F30178%2F&query=$.min_ansible_version)
 ## Summary
 
 This role:
