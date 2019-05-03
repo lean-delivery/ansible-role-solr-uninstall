@@ -20,8 +20,7 @@ install:
 
 script:
   - ansible-lint . -c .ansible-lint
-# Commented until java will support openjdk
-#  - molecule test -s default
+  - molecule test -s default
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

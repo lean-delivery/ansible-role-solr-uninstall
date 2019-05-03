@@ -69,26 +69,19 @@ platforms:
 provisioner:
   name: ansible
   log: False
+  inventory:
+    group_vars:
+      all:
+        solr_version: 7.7.1
+        solr_ssl_configure: False
   playbooks:
     create: ../resources/provisioning/AWS/create.yml
-    prepare: ../resources/provisioning/AWS/prepare.yml
+    prepare: ../resources/prepare.yml
     destroy: ../resources/provisioning/AWS/destroy.yml
   lint:
     name: ansible-lint
 scenario:
   name: cloud-aws-direct
-  test_sequence:
-    - lint
-    - destroy
-    - dependency
-    - syntax
-    - create
-    - prepare
-    - converge
-#    - idempotence
-    - side_effect
-    - verify
-    - destroy
 verifier:
   name: testinfra
   options:
